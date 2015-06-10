@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="converterFactory" class="org.kudlaty9102.factories.TemperatureConvertersFactory"/>
+    <bean id="factoryClient" factory-bean="converterFactory" factory-method="getInstance"/>
+
+    <bean id="converter" class="org.kudlaty9102.factories.ConverterFactory">
+        <property name="next" ref="factoryClient"/>
+    </bean>
+    <bean id="printer" class="org.kudlaty9102.Printer"/>
+</beans>
